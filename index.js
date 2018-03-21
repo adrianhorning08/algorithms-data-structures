@@ -1,3 +1,3 @@
-var twoSum = function(nums, target) {
-
-};
+if (false) {
+  console.log('hey');
+}
