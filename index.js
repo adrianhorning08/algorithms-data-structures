@@ -1,3 +1,49 @@
+// Leetcode 32. Longest Valid Parentheses
+// https://leetcode.com/problems/longest-valid-parentheses/description/
+function longestValidParentheses(str) {
+  // "()(()"
+  // "()(())"
+  var counter = 0;
+  var leftParens = [];
+  var max = 0;
+
+  for (var i = 0; i < str.length; i++) {
+      if ('(' === str[i]) {
+          leftParens.push('(');
+      } else if (str[i] === ')') {
+          if (leftParens.length >= 1) {
+              leftParens.pop();
+              counter+=2;
+          } else {
+              if (counter > max) {
+                  max = counter;
+              }
+              counter = 0;
+          }
+      }
+  }
+  if (counter > max) {
+      max = counter;
+  }
+  return max;
+}
+
+
+// Leetcode 698. Partition to K Equal Sum Subsets
+//Input: nums = [4, 3, 2, 3, 5, 2, 1], k = 4
+// Output: True
+// Explanation: It's possible to divide it into 4 subsets (5), (1, 4), (2,3), (2,3) with equal sums.
+var canPartitionKSubsets = function(nums, k) {
+// so I think you would set it up in buckets, like the hashing example
+// you would check to see if it exceeds goal
+// you would recursively search with one less number
+// if you placed every number successfully, it was a success
+
+
+};
+var nums = [4, 3, 2, 3, 5, 2, 1], k = 4;
+console.log(canPartitionKSubsets(nums,k));
+
 
 // Workfront questions
 // reverse a string
@@ -69,6 +115,7 @@ function solution(str) {
   var op2;
   var operatorCounter = 0;
   var operator;
+  // to speed this up, you prorbably wouldn't want to split
   str = str.split(' ');
 
   for (var i = 0; i < str.length; i++) {
@@ -95,5 +142,3 @@ function solution(str) {
       return op1 * op2;
   }
 }
-
-console.log(solution("5 * 10"));
