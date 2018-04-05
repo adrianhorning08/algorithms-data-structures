@@ -1,33 +1,28 @@
+// 468. Validate IP Address
+// https://leetcode.com/problems/validate-ip-address/description/
+
 // Leetcode 32. Longest Valid Parentheses
 // https://leetcode.com/problems/longest-valid-parentheses/description/
 function longestValidParentheses(str) {
   // "()(()"
   // "()(())"
-  var counter = 0;
-  var leftParens = [];
+  var leftParens = [-1];
   var max = 0;
 
   for (var i = 0; i < str.length; i++) {
       if ('(' === str[i]) {
-          leftParens.push('(');
-      } else if (str[i] === ')') {
-          if (leftParens.length >= 1) {
-              leftParens.pop();
-              counter+=2;
-          } else {
-              if (counter > max) {
-                  max = counter;
-              }
-              counter = 0;
-          }
+        leftParens.push(i);
+      } else {
+        leftParens.pop();
+        if (leftParens.length === 0) {
+          leftParens.push(i);
+        } else {
+          max = Math.max(max, i - leftParens.slice(-1)[0]);
+        }
       }
-  }
-  if (counter > max) {
-      max = counter;
   }
   return max;
 }
-
 
 // Leetcode 698. Partition to K Equal Sum Subsets
 //Input: nums = [4, 3, 2, 3, 5, 2, 1], k = 4
