@@ -1,9 +1,34 @@
+// Pramp
+// input:  arr = [1, 4, 5, 2, 3, 7, 8, 6, 10, 9], k = 2
+// output: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+function sortKMessedArray(arr, k) {
+  // your code goes here
+}
+
+
 // 3. Longest Substring Without Repeating Characters
 // https://leetcode.com/problems/longest-substring-without-repeating-characters/description/
 var lengthOfLongestSubstring = function(s) {
-
+  var obj = {};
+  var substring = '';
+  var temp = '';
+  for (var i = 0; i < s.length; i++) {
+    var letter = s[i];
+    if (obj[letter] !== undefined) {
+      if (temp.length > substring.length) {
+        substring = temp;
+      }
+      temp = letter;
+      obj = {};
+      obj[letter] = i;
+    } else {
+      temp += letter;
+      obj[letter] = i;
+    }
+  }
+  return substring.length;
 };
-
+console.log(lengthOfLongestSubstring("c"));
 
 // 468. Validate IP Address
 // https://leetcode.com/problems/validate-ip-address/description/
@@ -55,8 +80,6 @@ function validIP6(ip) {
   }
   return "IPv6";
 }
-var str = "256.256.256.256";
-console.log(validIPAddress(str));
 
 // Leetcode 32. Longest Valid Parentheses
 // https://leetcode.com/problems/longest-valid-parentheses/description/
