@@ -1,3 +1,10 @@
+// 3. Longest Substring Without Repeating Characters
+// https://leetcode.com/problems/longest-substring-without-repeating-characters/description/
+var lengthOfLongestSubstring = function(s) {
+
+};
+
+
 // 468. Validate IP Address
 // https://leetcode.com/problems/validate-ip-address/description/
 var validIPAddress = function(IP) {
@@ -10,7 +17,7 @@ var validIPAddress = function(IP) {
 
 function validIP4(ip) {
   let split = ip.split('.');
-  if (split.length !== 4) return "Neither"; 
+  if (split.length !== 4) return "Neither";
   for (var i = 0; i < split.length; i++) {
     let curr = split[i];
     if (curr[0] === '0') {
