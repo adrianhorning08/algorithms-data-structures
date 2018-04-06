@@ -1,5 +1,55 @@
 // 468. Validate IP Address
 // https://leetcode.com/problems/validate-ip-address/description/
+var validIPAddress = function(IP) {
+  if (IP.includes('.')) {
+    return validIP4(IP);
+  } else {
+    return validIP6(IP);
+  }
+};
+
+function validIP4(ip) {
+  let split = ip.split('.');
+  if (split.length !== 4) return "Neither"; 
+  for (var i = 0; i < split.length; i++) {
+    let curr = split[i];
+    if (curr[0] === '0') {
+      return "Neither";
+    } else if ((/[a-z]/g).test(curr)) {
+      return "Neither";
+    }
+    else if (Number(curr) >= 255) {
+      return "Neither";
+    } else {
+      continue;
+    }
+  }
+  return "IPv4";
+}
+
+function validIP6(ip) {
+  let split = ip.split(':');
+  if (split.length > 8) return "Neither";
+  for (var i = 0; i < split.length; i++) {
+    let curr = split[i].toLowerCase();
+    if (curr.length === 1 && curr[0] === '0') {
+      continue;
+    } else if (curr.length === 4) {
+      continue;
+    } else if (curr.length < 4) {
+      if (curr[0] !== '0') {
+        continue;
+      } else {
+        return 'Neither';
+      }
+    } else {
+      return "Neither";
+    }
+  }
+  return "IPv6";
+}
+var str = "256.256.256.256";
+console.log(validIPAddress(str));
 
 // Leetcode 32. Longest Valid Parentheses
 // https://leetcode.com/problems/longest-valid-parentheses/description/
@@ -37,7 +87,6 @@ var canPartitionKSubsets = function(nums, k) {
 
 };
 var nums = [4, 3, 2, 3, 5, 2, 1], k = 4;
-console.log(canPartitionKSubsets(nums,k));
 
 
 // Workfront questions
