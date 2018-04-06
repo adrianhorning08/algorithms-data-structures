@@ -44,7 +44,7 @@ return results;
 // input:  arr = [1, 4, 5, 2, 3, 7, 8, 6, 10, 9], k = 2
 // output: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 function sortKMessedArray(arr, k) {
-  
+
 
 }
 
