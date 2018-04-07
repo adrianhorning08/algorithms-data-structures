@@ -8,43 +8,44 @@
 var array = [['quick', 'lazy'], ['brown', 'black', 'grey'], ['fox', 'dog']];
 
 function printCombos(array) {
-
-  var maxLength = 0;
-  var results = [];
-
-  for (var i = 0; i < array.length; i++) {
-    if (array[i].length > maxLength) {
-     maxLength = array[i].length;
-    }
-  }
-
-  for (var i = 0; i < array.length; i++) {
-    var currentArr = array[i];
-    for (var j = i; j < currentArr.length; j++) {
-      var k = 0;
-      while (k < maxLength) {
-        var temp = [currentArr[j]];
-        for (var l = 0; l < array.length; l++) {
-          var nextArr = array[l];
-          if (nextArr[k] !== undefined && l !== i) {
-            temp.push(nextArr[k]);
-          }
-        }
-        results.push(temp);
-        k++;
-      }
-    }
-  }
-return results;
-
+  
+//   var maxLength = 0;
+//   var results = [];
+//
+//   for (var i = 0; i < array.length; i++) {
+//     if (array[i].length > maxLength) {
+//      maxLength = array[i].length;
+//     }
+//   }
+//
+//   for (var i = 0; i < array.length; i++) {
+//     var currentArr = array[i];
+//     for (var j = i; j < currentArr.length; j++) {
+//       var k = 0;
+//       while (k < maxLength) {
+//         var temp = [currentArr[j]];
+//         for (var l = 0; l < array.length; l++) {
+//           var nextArr = array[l];
+//           if (nextArr[k] !== undefined && l !== i) {
+//             temp.push(nextArr[k]);
+//           }
+//         }
+//         results.push(temp);
+//         k++;
+//       }
+//     }
+//   }
+// return results;
 }
+
+console.log(printCombos(array));
 
 
 // Pramp
 // input:  arr = [1, 4, 5, 2, 3, 7, 8, 6, 10, 9], k = 2
 // output: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 function sortKMessedArray(arr, k) {
-
+// insertion sort
 
 }
 
