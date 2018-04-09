@@ -12,14 +12,13 @@ function printCombos(array) {
 
   for (var i = 0; i < array.length; i++) {
     var currentSubArray = array[i];
+    var temp = [];
     for (var j = 0; j < results.length; j++) {
-      var temp = [];
       for (var k = 0; k < currentSubArray.length; k++) {
         temp.push(results[j].concat(currentSubArray[k]));
       }
-      results = temp;
-      temp = [];
     }
+    results = temp;
   }
   return results;
 }
