@@ -8,34 +8,20 @@
 var array = [['quick', 'lazy'], ['brown', 'black', 'grey'], ['fox', 'dog']];
 
 function printCombos(array) {
-  
-//   var maxLength = 0;
-//   var results = [];
-//
-//   for (var i = 0; i < array.length; i++) {
-//     if (array[i].length > maxLength) {
-//      maxLength = array[i].length;
-//     }
-//   }
-//
-//   for (var i = 0; i < array.length; i++) {
-//     var currentArr = array[i];
-//     for (var j = i; j < currentArr.length; j++) {
-//       var k = 0;
-//       while (k < maxLength) {
-//         var temp = [currentArr[j]];
-//         for (var l = 0; l < array.length; l++) {
-//           var nextArr = array[l];
-//           if (nextArr[k] !== undefined && l !== i) {
-//             temp.push(nextArr[k]);
-//           }
-//         }
-//         results.push(temp);
-//         k++;
-//       }
-//     }
-//   }
-// return results;
+  var results = [[]];
+
+  for (var i = 0; i < array.length; i++) {
+    var currentSubArray = array[i];
+    for (var j = 0; j < results.length; j++) {
+      var temp = [];
+      for (var k = 0; k < currentSubArray.length; k++) {
+        temp.push(results[j].concat(currentSubArray[k]));
+      }
+      results = temp;
+      temp = [];
+    }
+  }
+  return results;
 }
 
 console.log(printCombos(array));
