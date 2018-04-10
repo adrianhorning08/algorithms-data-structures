@@ -1,3 +1,14 @@
+function sumInRange(nums, queries) {
+    var sum = 0;
+    queries.forEach(arr => {
+        var first = arr[0];
+        var second = arr[1];
+        sum += nums.slice(first,second).reduce((a,b) => a+b)
+    })
+    return sum;
+}
+
+
 // Wayfair coding challenge
 // You're given a vector of vectors of words, e.g.:
 // [['quick', 'lazy'], ['brown', 'black', 'grey'], ['fox', 'dog']].
@@ -22,9 +33,6 @@ function printCombos(array) {
   }
   return results;
 }
-
-console.log(printCombos(array));
-
 
 // Pramp
 // input:  arr = [1, 4, 5, 2, 3, 7, 8, 6, 10, 9], k = 2
