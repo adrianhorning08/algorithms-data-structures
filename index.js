@@ -1,3 +1,8 @@
+$(document).ready(function() {
+  $("#div2").find("*").css({"color": "red", "border": "5px solid red"})
+  $("div").find("span").css({"color": "blue", "border": "5px solid lightgreen"})
+})
+
 function sumInRange(nums, queries) {
     var sum = 0;
     queries.forEach(arr => {
@@ -47,25 +52,23 @@ function sortKMessedArray(arr, k) {
 // https://leetcode.com/problems/longest-substring-without-repeating-characters/description/
 var lengthOfLongestSubstring = function(s) {
   var obj = {};
-  var substring = '';
-  var temp = '';
+  var max = 0;
+  var start = 0;
   for (var i = 0; i < s.length; i++) {
     var letter = s[i];
-    if (obj[letter] !== undefined) {
-      if (temp.length > substring.length) {
-        substring = temp;
-      }
-      temp = letter;
-      obj = {};
-      obj[letter] = i;
+    var curr = obj[letter];
+    if (curr !== null && start <= curr) {
+      start = curr  + 1;
     } else {
-      temp += letter;
-      obj[letter] = i;
+      max = Math.max(max, i - start +1);
     }
+    obj[letter] = i;
   }
-  return substring.length;
+
+  return max;
 };
 
+console.log(lengthOfLongestSubstring("dvdf"));
 // 468. Validate IP Address
 // https://leetcode.com/problems/validate-ip-address/description/
 var validIPAddress = function(IP) {

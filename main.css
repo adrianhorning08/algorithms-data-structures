@@ -1,15 +1,7 @@
-.foo {
-  border: 1px solid black;
-  width: 100px;
-  height: 100px;
-}
-
-.bar {
-  border: 1px solid black;
-  width: 50px;
-  height: 50px;
-}
-
-.foo:hover .bar {
-  background: black;
+div {
+  color: grey;
+  border: 5px solid black;
+  padding: 5px;
+  margin: 15px;
+  display: block;
 }
