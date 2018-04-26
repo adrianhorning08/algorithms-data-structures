@@ -1,5 +1,27 @@
+function arrayOfArrayProducts(arr) {
+   if (arr.length <= 1) {
+     return [];
+   }
+  var results = [];
+  var right = [];
+  right[arr.length-1] = 1;
+  var left = [1];
 
+  for (var i = 1; i<arr.length; i++) {
+    left[i] = left[i-1]*arr[i-1];
+  }
 
+  for (var i = arr.length-2; i>-1; i--) {
+   right[i] = right[i+1]*arr[i+1];
+  }
+
+  for (var i = 0; i<arr.length; i++) {
+    results[i] = left[i]*right[i];
+  }
+ return results;
+}
+
+console.log(arrayOfArrayProducts([2, 7, 3, 4]));
 
 $(document).ready(function() {
   $("#div2").find("*").css({"color": "red", "border": "5px solid red"})

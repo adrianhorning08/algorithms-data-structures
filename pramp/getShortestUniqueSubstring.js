@@ -36,5 +36,3 @@ function getShortestUniqueSubstring(arr, str) {
 }
 
 arr = ['x','y','z'], str = "xyyzyzyx"
-
-console.log(getShortestUniqueSubstring(arr,str));
