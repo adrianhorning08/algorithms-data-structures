@@ -1,27 +1,40 @@
-function arrayOfArrayProducts(arr) {
-   if (arr.length <= 1) {
-     return [];
-   }
-  var results = [];
-  var right = [];
-  right[arr.length-1] = 1;
-  var left = [1];
+function test() {
+  console.log(x);
+}
+console.log(test());
+var x = 5;
 
-  for (var i = 1; i<arr.length; i++) {
-    left[i] = left[i-1]*arr[i-1];
-  }
+function pancakeSort(arr) {
 
-  for (var i = arr.length-2; i>-1; i--) {
-   right[i] = right[i+1]*arr[i+1];
+  for (let i = arr.length-1; i > 0; i--) {
+    maxIndex = max(arr,i)
+    flip(arr, maxIndex);
+    flip(arr, i);
   }
-
-  for (var i = 0; i<arr.length; i++) {
-    results[i] = left[i]*right[i];
-  }
- return results;
+  return arr;
 }
 
-console.log(arrayOfArrayProducts([2, 7, 3, 4]));
+function flip(arr, k) {
+  const pivot = Math.floor((k+1)/2);
+  for (let i =0; i < pivot; i++) {
+    let temp = arr[i];
+    arr[i] = arr[k - i];
+    arr[k - i] = temp;
+  }
+}
+
+function max(arr,k) {
+  let ans = 0;
+  for (let i = 0; i < k; i++) {
+    if (arr[i] > arr[ans]) {
+      ans = i;
+    }
+  }
+  return ans;
+}
+
+console.log(pancakeSort([3,1,2,4,6,5]));
+
 
 $(document).ready(function() {
   $("#div2").find("*").css({"color": "red", "border": "5px solid red"})
