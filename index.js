@@ -1,8 +1,4 @@
-function test() {
-  console.log(x);
-}
-console.log(test());
-var x = 5;
+
 
 function pancakeSort(arr) {
 
