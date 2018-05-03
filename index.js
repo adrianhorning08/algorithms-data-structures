@@ -1,4 +1,32 @@
-// here is the comment
+const longestCommonPrefix = function(strs) {
+   //could you say while (current !== undefined), current being the current letter, loop
+    // if the substr doesn't match one of the words, return it
+
+    let prefix = '';
+    let i = 0;
+    let j = 0;
+
+    while (j < strs[0].length) {
+       if (i === 0) {
+           prefix += strs[0][j];
+           j++;
+       }
+        if (prefix !== strs[i].slice(0,j+1)){
+           if (j === 1) {
+               return '';
+           } else {
+               return prefix;
+           }
+       }
+        if (i === strs.length-1) {
+            i = 0;
+        } else {
+            i++;
+        }
+    }
+};
+
+console.log(longestCommonPrefix(["flower","flow","flight"]));
 
 function pancakeSort(arr) {
 
@@ -28,9 +56,6 @@ function max(arr,k) {
   }
   return ans;
 }
-
-console.log(pancakeSort([3,1,2,4,6,5]));
-
 
 $(document).ready(function() {
   $("#div2").find("*").css({"color": "red", "border": "5px solid red"})
