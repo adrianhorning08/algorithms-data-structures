@@ -1,29 +1,43 @@
-const longestCommonPrefix = function(strs) {
+var isValid = function(s) {
+    const leftParens = [];
+    const set =  new Set('{', '[', '(',)
 
-    let temp = '';
-    let prefix = '';
-    let i = 0;
-    let j = 0;
-    let current = strs[0][0];
-
-    while(current !== undefined) {
-        if (current === strs[i][j]) {
-            i++;
+    for (let i = 0; i < s.length; i++) {
+        if (set.has(s[i])) {
+            leftParens.push(s[i]);
         } else {
-            return prefix;
-        }
-
-        if (i === strs.length) {
-            prefix += current;
-            i = 0;
-            j++;
-            current = strs[i][j];
+            let paren = leftParens.pop();
+            switch (s[i]) {
+                case '}':
+                    if (paren === '{') {
+                        continue;
+                    } else {
+                        return false
+                    }
+                    break;
+                case ')':
+                    if (paren === '(') {
+                        continue;
+                    } else {
+                        return false;
+                    }
+                    break;
+                case ']':
+                    if (paren === ']') {
+                        continue;
+                    } else {
+                        return false;
+                    }
+                    break;
+                default:
+                    return false;
+            }
         }
     }
-    return prefix;
+    return leftParens.length === 0;
 };
 
-console.log(longestCommonPrefix([""]));
+console.log(isValid('()'));
 
 function pancakeSort(arr) {
 
