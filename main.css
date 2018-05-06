@@ -6,26 +6,25 @@ h2 {
   margin-top: 20px;
 }
 
-div {
-  color: grey;
-  border: 5px solid black;
-  padding: 5px;
-  margin: 15px;
-  display: block;
-}
 
 .outer {
-  border: 5px solid grey;
+  background-color: grey;
+  display: flex;
   height: 200px;
-  width: 200px;
+  width: 500px;
+}
+
+.outer p {
+  color: red;
+}
+
+.blue {
+  color: blue;
 }
 
 .inner {
-  background-color: lightblue;
-  border: 5px solid blue;
-  height: 100px;
-  width: 100%;
-  box-sizing: border-box;
+  background-color: blue;
+  flex: 1;
 }
 
 

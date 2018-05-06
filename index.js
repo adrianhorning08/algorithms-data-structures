@@ -1,6 +1,9 @@
+const header = document.querySelector('header');
+header.innerHTML = 'HTMl here';
+
 var isValid = function(s) {
     const leftParens = [];
-    const set =  new Set('{', '[', '(',)
+    const set =  new Set(['{', '[', '('])
 
     for (let i = 0; i < s.length; i++) {
         if (set.has(s[i])) {
@@ -23,7 +26,7 @@ var isValid = function(s) {
                     }
                     break;
                 case ']':
-                    if (paren === ']') {
+                    if (paren === '[') {
                         continue;
                     } else {
                         return false;
@@ -37,7 +40,7 @@ var isValid = function(s) {
     return leftParens.length === 0;
 };
 
-console.log(isValid('()'));
+console.log(isValid("{[]}"));
 
 function pancakeSort(arr) {
 
