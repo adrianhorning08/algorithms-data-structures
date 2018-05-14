@@ -1,46 +1,13 @@
-const header = document.querySelector('header');
-header.innerHTML = 'HTMl here';
-
-var isValid = function(s) {
-    const leftParens = [];
-    const set =  new Set(['{', '[', '('])
-
-    for (let i = 0; i < s.length; i++) {
-        if (set.has(s[i])) {
-            leftParens.push(s[i]);
-        } else {
-            let paren = leftParens.pop();
-            switch (s[i]) {
-                case '}':
-                    if (paren === '{') {
-                        continue;
-                    } else {
-                        return false
-                    }
-                    break;
-                case ')':
-                    if (paren === '(') {
-                        continue;
-                    } else {
-                        return false;
-                    }
-                    break;
-                case ']':
-                    if (paren === '[') {
-                        continue;
-                    } else {
-                        return false;
-                    }
-                    break;
-                default:
-                    return false;
-            }
+var moveZeroes = function(nums) {
+    for (let i = 0; i < nums.length; i++) {
+        if (nums[i] === 0) {
+            nums.push(0);
+            nums.splice(i,1)
         }
     }
-    return leftParens.length === 0;
 };
 
-console.log(isValid("{[]}"));
+console.log(moveZeroes([0,0,1]));
 
 function pancakeSort(arr) {
 
