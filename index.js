@@ -1,13 +1,52 @@
-var moveZeroes = function(nums) {
-    for (let i = 0; i < nums.length; i++) {
-        if (nums[i] === 0) {
-            nums.push(0);
-            nums.splice(i,1)
+function consecOnes(n) {
+  let binary = n.toString(2);
+  let count = 0;
+  let max = 0;
+
+  for (let i = 0; i < binary.length; i++) {
+    if (binary[i]) {
+        count++;
+    } else {
+      max = Math.max(count,max);
+      count = 0;
+    }
+  }
+  return max;
+}
+
+console.log(consecOnes(100));
+
+
+
+var plusOne = function(digits) {
+
+    // 999
+    // 989
+    // start from the back
+    // if its a nine, check the number ahead of it
+    // if that number is a 9, recurse?, if there is nothing, set curr number to 0, and push a 1 at the front of the array
+    for (let i = digits.length-1; i > -1; i--) {
+        if (digits[i] === 9) {
+            if (digits[i-1] === 9) {
+                return plusOne(digits.slice(0,i));
+            } else if (digits[i-1] === undefined) {
+                digits[i] = 0;
+                digits.unshift(1);
+                return digits
+            } else {
+                digits[i]++;
+                return digits;
+            }
+        } else {
+            digits[i]++;
+            return digits
         }
     }
+    return digits;
 };
 
-console.log(moveZeroes([0,0,1]));
+console.log(plusOne([9]));
+
 
 function pancakeSort(arr) {
 
