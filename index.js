@@ -1,20 +1,4 @@
-function consecOnes(n) {
-  let binary = n.toString(2);
-  let count = 0;
-  let max = 0;
 
-  for (let i = 0; i < binary.length; i++) {
-    if (binary[i]) {
-        count++;
-    } else {
-      max = Math.max(count,max);
-      count = 0;
-    }
-  }
-  return max;
-}
-
-console.log(consecOnes(100));
 
 
 
@@ -44,9 +28,6 @@ var plusOne = function(digits) {
     }
     return digits;
 };
-
-console.log(plusOne([9]));
-
 
 function pancakeSort(arr) {
 
@@ -116,14 +97,6 @@ function printCombos(array) {
     results = temp;
   }
   return results;
-}
-
-// Pramp
-// input:  arr = [1, 4, 5, 2, 3, 7, 8, 6, 10, 9], k = 2
-// output: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-function sortKMessedArray(arr, k) {
-// insertion sort
-
 }
 
 
