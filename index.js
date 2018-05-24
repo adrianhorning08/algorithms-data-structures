@@ -1,4 +1,46 @@
+// We need the ability to divide an unknown integer into a given number
+// of even parts — or at least as even as they can be.
+// The sum of the parts should be the original value, but each part
+// should be an integer, and they should be as close as possible.
+// Example code:
+// splitInteger(20, 6) // returns [3,3,3,3,4,4]
 
+function splitInteger(n, spots) {
+  20/6 -> 3.333
+
+  // you would have to do math, like what times what gives you this
+  // so you would start with like 3*6 = 18, 3 * 5 = 15
+  // but you should see what +- 1 is first, because the numbers have to be close
+}
+
+//
+// Complete the function so that it returns an array of integer representing the parts. Ignoring the order of the parts, there is only one valid solution for each input to your function!
+// (Also, there is no reason to test for edge cases: the input to your function will always be valid for this challenge.)
+//
+// Dave has a lot of data he is required to apply filters to, which are simple enough, but he wants a shorter way of doing so.
+// He wants the following functions to work as expected:
+// even # [1,2,3,4,5].even should return [2,4]
+// odd # [1,2,3,4,5].odd should return [1,3,5]
+// under # [1,2,3,4,5].under(4) should return [1,2,3]
+// over # [1,2,3,4,5].over(4) should return [5]
+// in_range # [1,2,3,4,5].in_range(1..3) should return [1,2,3]
+//
+// They should also work when used together, for example:
+// (1..100).to_a.even.in_range(18..30) # should return [18, 20, 22, 24, 26, 28, 30]
+//
+// And finally the filters should only accept integer values from an array, for example:
+// ["a", 1, "b", 300, "x", "q", 63, 122, 181, "z", 0.83, 0.11].even # should return [300, 122]
+//
+// You've been tasked with writing an autocorrect service for messages sent by your legal team. The messages which are sent to other lawyers need to be updated so that each message sent references the lawyer's client for clarity. To do this you need to replace all instances of "you" and it's misspellings with "your client".
+// Write a function called autocorrect that takes a string and replaces all instances of "you", "youuu", or "u" (not case sensitive) with "your client" (always lower case).
+// Return the resulting string.
+// Here's the slightly tricky part: These are informal messages, so there are different forms of "you" and "u".
+// For the purposes of this challenge, here's what you need to support:
+//
+// "youuuuu" with any number of u characters tacked onto the end
+// "u" at the beginning, middle, or end of a string, but NOT part of a word
+// "you" but NOT as part of another word like "young" or "Bayou"
+//
 
 
 
