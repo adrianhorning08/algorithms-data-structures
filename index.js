@@ -6,12 +6,24 @@
 // splitInteger(20, 6) // returns [3,3,3,3,4,4]
 
 function splitInteger(n, spots) {
-  20/6 -> 3.333
+  // const arr = [];
+  // let copySpots = spots;
+  // for (var i = 0; i < spots; i++) {
+  //   let rest = n % copySpots;
+  //   let result = n / spots;
+  //   if (rest === 0) {
+  //     arr.push(Math.floor(result));
+  //   } else {
+  //     arr.push(Math.ceil(result));
+  //   }
+  //   copySpots--;
+  // }
+  // return arr;
 
-  // you would have to do math, like what times what gives you this
-  // so you would start with like 3*6 = 18, 3 * 5 = 15
-  // but you should see what +- 1 is first, because the numbers have to be close
+  
 }
+
+console.log(splitInteger(20,11));
 
 //
 // Complete the function so that it returns an array of integer representing the parts. Ignoring the order of the parts, there is only one valid solution for each input to your function!
@@ -30,7 +42,12 @@ function splitInteger(n, spots) {
 //
 // And finally the filters should only accept integer values from an array, for example:
 // ["a", 1, "b", 300, "x", "q", 63, 122, 181, "z", 0.83, 0.11].even # should return [300, 122]
-//
+
+
+
+
+
+
 // You've been tasked with writing an autocorrect service for messages sent by your legal team. The messages which are sent to other lawyers need to be updated so that each message sent references the lawyer's client for clarity. To do this you need to replace all instances of "you" and it's misspellings with "your client".
 // Write a function called autocorrect that takes a string and replaces all instances of "you", "youuu", or "u" (not case sensitive) with "your client" (always lower case).
 // Return the resulting string.
