@@ -6,30 +6,25 @@
 // splitInteger(20, 6) // returns [3,3,3,3,4,4]
 
 function splitInteger(n, spots) {
-  // const arr = [];
-  // let copySpots = spots;
-  // for (var i = 0; i < spots; i++) {
-  //   let rest = n % copySpots;
-  //   let result = n / spots;
-  //   if (rest === 0) {
-  //     arr.push(Math.floor(result));
-  //   } else {
-  //     arr.push(Math.ceil(result));
-  //   }
-  //   copySpots--;
-  // }
-  // return arr;
-
-  
+  const arr = [];
+  while (n > 0) {
+    let num = Math.round(n / spots);
+    arr.push(num);
+    n -= num;
+    spots--;
+  }
+  return arr.sort();
 }
 
-console.log(splitInteger(20,11));
-
 //
-// Complete the function so that it returns an array of integer representing the parts. Ignoring the order of the parts, there is only one valid solution for each input to your function!
-// (Also, there is no reason to test for edge cases: the input to your function will always be valid for this challenge.)
+// Complete the function so that it returns an array of integer representing the parts.
+// Ignoring the order of the parts, there is only one valid solution for each input to your
+// function!
+// (Also, there is no reason to test for edge cases:
+// the input to your function will always be valid for this challenge.)
 //
-// Dave has a lot of data he is required to apply filters to, which are simple enough, but he wants a shorter way of doing so.
+// Dave has a lot of data he is required to apply filters to, which are simple enough,
+// but he wants a shorter way of doing so.
 // He wants the following functions to work as expected:
 // even # [1,2,3,4,5].even should return [2,4]
 // odd # [1,2,3,4,5].odd should return [1,3,5]
@@ -43,9 +38,35 @@ console.log(splitInteger(20,11));
 // And finally the filters should only accept integer values from an array, for example:
 // ["a", 1, "b", 300, "x", "q", 63, 122, 181, "z", 0.83, 0.11].even # should return [300, 122]
 
+Array.prototype.even = function() {
+  return this.filter( el => {
+    return el % 2 === 0;
+  })
+}
 
+Array.prototype.odd = function() {
+  return this.filter( el => {
+    return el % 2 !== 0;
+  })
+}
 
+Array.prototype.under = function(n) {
+  return this.filter( el => {
+    return el < n;
+  })
+}
 
+Array.prototype.over = function(n) {
+  return this.filter( el => {
+    return el > n;
+  })
+}
+
+Array.prototype.inRange = function(min, max) {
+  return this.filter( el => {
+    return el >= min && el <= max;
+  })
+}
 
 
 // You've been tasked with writing an autocorrect service for messages sent by your legal team. The messages which are sent to other lawyers need to be updated so that each message sent references the lawyer's client for clarity. To do this you need to replace all instances of "you" and it's misspellings with "your client".
