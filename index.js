@@ -85,8 +85,29 @@ Array.prototype.inRange = function(min, max) {
 // "you" but NOT as part of another word like "young" or "Bayou"
 //
 
-function autocorrect() {
+function autocorrect(str) {
+  const newSent = [];
+  for (var i = 0; i < str.length; i++) {
+    if (str[i] !== ' ') {
+      let j = 0;
+      let temp = '';
+      while (str[i] !== ' ') {
+        temp += str[i];
+        j++;
+      }
+      newSent.push(helper(temp));
+      i+=j;
+    }
+  }
+  return newSent.join(' ');
+}
 
+function helper(word) {
+  // have to keep punctuation in mind
+  // for simplicity, lets not worry about it right now...
+  for (var i = 0; i < word.length; i++) {
+    word[i]
+  }
 }
 
 console.log(autocorrect('youtube'));
