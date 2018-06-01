@@ -1,3 +1,16 @@
+function removeDuplicates(nums) {
+    if (nums.length == 0) return 0;
+    let i = 0;
+    for (let j = 1; j < nums.length; j++) {
+        if (nums[j] != nums[i]) {
+            i++;
+            nums[i] = nums[j];
+        }
+    }
+    return i + 1;
+}
+console.log(removeDuplicates([0,0,1,1,1,2,2,3,3,4]));
+
 // We need the ability to divide an unknown integer into a given number
 // of even parts — or at least as even as they can be.
 // The sum of the parts should be the original value, but each part
@@ -110,7 +123,6 @@ function helper(word) {
   }
 }
 
-console.log(autocorrect('youtube'));
 
 
 
