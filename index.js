@@ -1,15 +1,23 @@
-function removeDuplicates(nums) {
-    if (nums.length == 0) return 0;
-    let i = 0;
-    for (let j = 1; j < nums.length; j++) {
-        if (nums[j] != nums[i]) {
-            i++;
-            nums[i] = nums[j];
+var trailingZeroes = function(n) {
+    let copy = n;
+    let product = 1;
+    while (copy > 0) {
+        product *= copy;
+        copy--;
+    }
+
+    let str = product.toString();
+    let count = 0;
+    for (let i = str.length-1; i > 0; i--) {
+        if (str[i] === '0') {
+            count++;
+        } else {
+            return count;
         }
     }
-    return i + 1;
-}
-console.log(removeDuplicates([0,0,1,1,1,2,2,3,3,4]));
+    return count;
+};
+
 
 // We need the ability to divide an unknown integer into a given number
 // of even parts — or at least as even as they can be.
