@@ -1,3 +1,119 @@
+/*
+_____________________________________________________________________
+1.6 String Compression
+missippi -> m1i1s2i1p2i1
+if compression won't make it smaller than the original string, return orignal string
+Assume lowercase
+Assumptions ->
+-Spaces?
+*/
+
+function compress(str) {
+  // loop over string
+  // keep track of the count
+  // as soon as the next letter than the current letter (or its at the end of the string), append the
+  // tempCount and letter onto a newStr
+  // then compare the str lengths to see which str to return
+
+  let newStr = '';
+  let tempCount = 1;
+
+  for (var i = 0; i < str.length; i++) {
+    let letter = str[i];
+    if (letter !== str[i+1]) {
+      newStr += letter += tempCount
+      tempCount = 1;
+    } else {
+      tempCount++;
+    }
+  }
+  return newStr.length < str.length ? newStr : str;
+}
+console.log(compress('missippi'));
+
+
+// _____________________________________________________________________
+// 1.5 One Away
+
+// Assumptions ->
+// case sensative?
+// character set ASCII or Unicode?
+// spaces?
+
+function oneAway(str1, str2) {
+  // example -> pale, pal
+  // you can insert, remove, or replace a character
+
+  // if all characters of str2 are the same, except for 1
+  let count = 0;
+  let longest;
+  let shortest;
+
+  if (str1.length >= str2.length) {
+    longest = str1;
+    shortest = str2;
+  } else {
+    longest = str2;
+    shortest = str1;
+  }
+
+  for (var i = 0; i < longest.length; i++) {
+    if (longest[i] !== shortest[i]) {
+      count++;
+    }
+  }
+
+  return count > 1 ? false : true;
+}
+
+// _____________________________________________________________________
+// 1.4 Palindrome Permutation
+// ASCII chars?
+// case sensative?
+// spaces matter?
+
+function palinPerm(str) {
+  // a string can only have 1 odd character count
+
+  // its always gonna be O(n), but a small improvement would be to
+  // check for the odd count as you're building the obj
+
+  const obj = {};
+
+  for (var i = 0; i < str.length; i++) {
+    let letter = str[i];
+    if (letter !== ' ') {
+      if (obj[letter]) {
+        obj[letter]++;
+      } else {
+        obj[letter] = 1;
+      }
+    }
+  }
+
+  let oddCount = 0;
+
+  Object.values(obj).forEach(n => {
+    if (n % 2 !== 0) {
+      oddCount++;
+    }
+  })
+
+  return oddCount > 1 ? false : true;
+}
+
+
+
+// URLify
+// assumptions -
+// ASCII characters?
+
+function URLify(str,len) {
+  str = str.slice(0,len);
+  return str.split(' ').join('%20')
+}
+
+
 // check permutations
 // assumptions -
 // case senesative?
@@ -34,16 +150,3 @@ function helper(str) {
 
   return obj;
 }
-
-// URLify
-// assumptions -
-// ASCII characters?
-
-function URLify(str,len) {
-  str = str.slice(0,len);
-  return str.split(' ').join('%20')
-}
-
-// Palindrome Permutation
-// ASCII chars?
-// case sensative?
