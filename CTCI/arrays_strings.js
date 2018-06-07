@@ -1,5 +1,34 @@
 /*
 _____________________________________________________________________
+1.7 Rotate Matrix
+  The trick is being able to do it in place
+*/
+function rotateMat(matrix) {
+
+  for (var layer = 0; layer < matrix.length/2; layer++) {
+    let first = layer;
+    let last = matrix.length - 1 - layer;
+    for (var i = first; i < last; i++) {
+      let offset = i - first;
+
+      let top = matrix[first][i];
+      matrix[first][i] = matrix[last - offset][first];
+      matrix[last - offset][first] = matrix[last][last - offset];
+      matrix[last][last - offset] = matrix[i][last];
+      matrix[i][last] = top;
+    }
+  }
+  return matrix;
+}
+const mat = [
+  [1,2,3,4],
+  [5,6,7,8],
+  [9,10,11,12],
+  [13,14,15,16]
+];
+console.log(rotateMat(mat));
+
+/*_____________________________________________________________________
 1.6 String Compression
 missippi -> m1i1s2i1p2i1
 if compression won't make it smaller than the original string, return orignal string
@@ -29,8 +58,6 @@ function compress(str) {
   }
   return newStr.length < str.length ? newStr : str;
 }
-console.log(compress('missippi'));
-
 
 // _____________________________________________________________________
 // 1.5 One Away
