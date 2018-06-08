@@ -1,3 +1,79 @@
+/*
+NIO
+given a roman string (XVIIIXIII...)
+check if it's a valid string
+that was an easy one
+
+ah because for roman number, you can only subtract 1 character from a bigger one, i.e. IV = 4
+you cant have IIV = 3
+so say, you can XIV = 14, but a string of XIIV would be an invalid stirng
+you can't have smaller number before a bigger number
+
+Assumptions ->
+- What is the range?
+- I dont get this at all cause as long as the characters are roman numerals
+you can coerce any letters into a number
+*/
+
+function validRoman(str) {
+  // cant have a smaller number before a larger one
+  // exceptions ->
+    // you can have 1 I before a X or V
+    // you can have 1 X before L
+    // you can have 1 X before C
+
+// i can't think of anything else other than checking every character
+// and checking for every condition
+
+  for (let i = str.length-1; i > 0 ; i--) {
+    let char = str[i];
+    // if V, you can't have anything less than V (except I)
+    // in this case, only thing less is double 1's
+    if (char === 'V') {
+      if (str[i-1] === 'I' && str[i-2] === 'I') {
+        return false;
+      }
+      // if X, you can't have anything less it (except 1 I)
+      // in this case, the only thing less than X is V
+    } else if (char === 'X') {
+      if (str[i-1] === 'I' && str[i-2] === 'I') {
+        return false;
+      } else if (str[i-1] === 'V') {
+        return false;
+      }
+      // if L, you can't have anything less than L next to it (except X)
+    } else if (char === 'L') {
+      if (str[i-1] !== 'X') {
+        if (i !== 0) {
+          return false;
+        }
+      }
+      // if C, you cant have anything less than C (except X)
+      // and it can have itself next to it
+    } else if (char === 'C') {
+      if (str[i-1] !== 'X' && str[i-1] !== 'C') {
+        if (i !== 0) {
+          return false;
+        }
+      }
+    }
+  }
+  return true;
+}
+
+
+/*
+NIO
+given a MxN matrix array retrieve the elements, in clockwise order
+*/
+
+
+
+
+
+
+
+
 var trailingZeroes = function(n) {
     let copy = n;
     let product = 1;
