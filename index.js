@@ -16,40 +16,29 @@ you can coerce any letters into a number
 */
 
 function validRoman(str) {
-  // cant have a smaller number before a larger one
-  // exceptions ->
-    // you can have 1 I before a X or V
-    // you can have 1 X before L
-    // you can have 1 X before C
-
-// i can't think of anything else other than checking every character
-// and checking for every condition
 
   for (let i = str.length-1; i > 0 ; i--) {
     let char = str[i];
-    // if V, you can't have anything less than V (except I)
-    // in this case, only thing less is double 1's
     if (char === 'V') {
       if (str[i-1] === 'I' && str[i-2] === 'I') {
         return false;
+      } else if (str[i-1] === 'I' && str[i+1] === 'I') {
+        return false;
       }
-      // if X, you can't have anything less it (except 1 I)
-      // in this case, the only thing less than X is V
     } else if (char === 'X') {
       if (str[i-1] === 'I' && str[i-2] === 'I') {
         return false;
       } else if (str[i-1] === 'V') {
         return false;
+      } else if (str[i-1] === 'I' && str[i+1] === 'I') {
+        return false;
       }
-      // if L, you can't have anything less than L next to it (except X)
     } else if (char === 'L') {
       if (str[i-1] !== 'X') {
         if (i !== 0) {
           return false;
         }
       }
-      // if C, you cant have anything less than C (except X)
-      // and it can have itself next to it
     } else if (char === 'C') {
       if (str[i-1] !== 'X' && str[i-1] !== 'C') {
         if (i !== 0) {
@@ -61,15 +50,75 @@ function validRoman(str) {
   return true;
 }
 
+// good one to test is XIVI
 
 /*
 NIO
 given a MxN matrix array retrieve the elements, in clockwise order
+  [
+    [1,2,3],
+    [4,5,6],
+    [7,8,9],
+    [10,11,12]
+  ]
+  [1,2,3,6,9,12,11,10,7,4,5,8]
+
+  what about recursion??
+  as soon as you get to the of something, go down, when you get to bottom, go left, when you get
+  too far to left, go up
+  problem is...how do you know if you've already visited an item...?
+  you might have to keep track of x,y. X being the col, Y, is the row
+
+  as soon as x hits length, decrement
+  same with y,
+  then only loop until x or y
 */
 
+function retrieveMatrix(matrix) {
+  const newArr = [];
+  let startRow = 0;
+  let startCol = 0;
+  let endRow = matrix.length;
+  let endCol = matrix[0].length;
+  let i = 0;
 
+  while (startRow < endRow && startCol < endCol) {
+    // move right
+    for (i = startCol; i < endCol; i++) {
+      newArr.push(matrix[startRow][i])
+    }
+    startRow++;
 
+    // move down
+    for (i = startRow; i < endRow; i++) {
+      newArr.push(matrix[i][endCol-1])
+    }
+    endCol--;
 
+    if (startRow < endRow) {
+      // move left
+      for (i = endCol-1; i >= startCol; i--) {
+        newArr.push(matrix[endRow-1][i])
+      }
+      endRow--;
+    }
+    if (startCol < endCol) {
+      // move up
+      for (i = endRow-1; i >= startRow; i--) {
+        newArr.push(matrix[i][startCol])
+      }
+      startCol++
+    }
+  }
+  return newArr;
+}
+const matrix = [
+  [1,2,3],
+  [4,5,6],
+  [7,8,9],
+  [10,11,12]
+];
+console.log(retrieveMatrix(matrix));
 
 
 
