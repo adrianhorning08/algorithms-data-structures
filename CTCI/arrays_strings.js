@@ -1,5 +1,48 @@
 /*
 _____________________________________________________________________
+1.9 String Rotation
+  Assumptions ->
+    Empty strings?
+    ASCII or Unicode?
+
+  Plan ->
+    Really smart way CTCI does it, concatenate string1 to string1, and see
+    if str2 is a substring of str1
+*/
+
+
+
+/*
+_____________________________________________________________________
+1.9 String Rotation
+  Assumptions ->
+    Empty strings?
+    ASCII or Unicode?
+
+  Plan ->
+    Really smart way CTCI does it, concatenate string1 to string1, and see
+    if str2 is a substring of str1
+*/
+function stringRotation(str1,str2) {
+  if (str1.length !== str2.length || str2.length === 0 || str1.length === 0) {
+    return false;
+  }
+
+  let temp = str1 + str1;
+
+  for (var i = 0; i < temp.length; i++) {
+    let newStr = temp.slice(i, str2.length+i);
+    if (str2 === newStr) {
+      return true;
+    }
+  }
+  return false;
+}
+// console.log(stringRotation('waterbottle', 'erbottlewat'));
+
+
+/*
+_____________________________________________________________________
 1.8 Zero Matrix
   If you find a zero, recurse up, down, right and left
 
@@ -59,7 +102,7 @@ const matriz = [
   [3,1,3,4]
 ];
 
-console.log(zeroMatrix(matriz));
+// console.log(zeroMatrix(matriz));
 
 
 /*
