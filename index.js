@@ -1,3 +1,4 @@
+
 /*
 NIO
 given a roman string (XVIIIXIII...)
@@ -9,6 +10,9 @@ you cant have IIV = 3
 so say, you can XIV = 14, but a string of XIIV would be an invalid stirng
 you can't have smaller number before a bigger number
 
+you can only subtract 1 previous number only, then any preceding numbers have to be equal or lesser than previous one.
+19 is XIX, not IXX
+
 Assumptions ->
 - What is the range?
 - I dont get this at all cause as long as the characters are roman numerals
@@ -17,40 +21,43 @@ you can coerce any letters into a number
 
 function validRoman(str) {
 
-  for (let i = str.length-1; i > 0 ; i--) {
-    let char = str[i];
-    if (char === 'V') {
-      if (str[i-1] === 'I' && str[i-2] === 'I') {
-        return false;
-      } else if (str[i-1] === 'I' && str[i+1] === 'I') {
-        return false;
-      }
-    } else if (char === 'X') {
-      if (str[i-1] === 'I' && str[i-2] === 'I') {
-        return false;
-      } else if (str[i-1] === 'V') {
-        return false;
-      } else if (str[i-1] === 'I' && str[i+1] === 'I') {
-        return false;
-      }
-    } else if (char === 'L') {
-      if (str[i-1] !== 'X') {
-        if (i !== 0) {
-          return false;
-        }
-      }
-    } else if (char === 'C') {
-      if (str[i-1] !== 'X' && str[i-1] !== 'C') {
-        if (i !== 0) {
-          return false;
-        }
-      }
-    }
-  }
-  return true;
+  // for (let i = str.length-1; i > 0 ; i--) {
+  //   let char = str[i];
+  //   if (char === 'V') {
+  //     if (str[i-1] === 'I' && str[i-2] === 'I') {
+  //       return false;
+  //     } else if (str[i-1] === 'I' && str[i+1] === 'I') {
+  //       return false;
+  //     }
+  //   } else if (char === 'X') {
+  //     if (str[i-1] === 'I' && str[i-2] === 'I') {
+  //       return false;
+  //     } else if (str[i-1] === 'V') {
+  //       return false;
+  //     } else if (str[i-1] === 'I' && str[i+1] === 'I') {
+  //       return false;
+  //     }
+  //   } else if (char === 'L') {
+  //     if (str[i-1] !== 'X') {
+  //       if (i !== 0) {
+  //         return false;
+  //       }
+  //     }
+  //   } else if (char === 'C') {
+  //     if (str[i-1] !== 'X' && str[i-1] !== 'C') {
+  //       if (i !== 0) {
+  //         return false;
+  //       }
+  //     }
+  //   }
+  // }
+  // return true;
+
+  
+
 }
 
-// good one to test is XIVI
+// good one to test is XIVI -> start from the back, 1 is less than 6, so you return false
 
 /*
 NIO
@@ -118,7 +125,6 @@ const matrix = [
   [7,8,9],
   [10,11,12]
 ];
-console.log(retrieveMatrix(matrix));
 
 
 

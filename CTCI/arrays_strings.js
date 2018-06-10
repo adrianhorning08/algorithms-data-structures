@@ -1,5 +1,69 @@
 /*
 _____________________________________________________________________
+1.8 Zero Matrix
+  If you find a zero, recurse up, down, right and left
+
+  Assumptions ->
+  Not sure, seems pretty straight forward
+
+  Plan ->
+
+
+  *This might really eff up cause if it changes the col and row to 0
+  right away, I'll end up with all 0's in the entire table.
+*/
+
+function zeroMatrix(matrix) {
+  const rows = new Array(matrix.length).fill(false);
+  const cols = new Array(matrix[0].length).fill(false);
+
+  for (var i = 0; i < matrix.length; i++) {
+    for (var j = 0; j < matrix[i].length; j++) {
+      if (matrix[i][j] === 0) {
+        rows[i] = true;
+        cols[j] = true;
+      }
+    }
+  }
+
+  for (var i = 0; i < rows.length; i++) {
+    if (rows[i]) {
+      nullifyRow(i);
+    }
+  }
+
+  for (var i = 0; i < cols.length; i++) {
+    if (cols[i]) {
+      nullifyCol(i);
+    }
+  }
+
+  function nullifyRow(index) {
+    for (var i = 0; i < matrix[index].length; i++) {
+      matrix[index][i] = 0;
+    }
+  }
+
+  function nullifyCol(index) {
+    for (var i = 0; i < matrix.length; i++) {
+      matrix[i][index] = 0;
+    }
+  }
+  return matrix;
+}
+
+const matriz = [
+  [1,2,0,4],
+  [5,0,7,8],
+  [5,4,1,4],
+  [3,1,3,4]
+];
+
+console.log(zeroMatrix(matriz));
+
+
+/*
+_____________________________________________________________________
 1.7 Rotate Matrix
   The trick is being able to do it in place
 */
@@ -26,7 +90,7 @@ const mat = [
   [9,10,11,12],
   [13,14,15,16]
 ];
-console.log(rotateMat(mat));
+// console.log(rotateMat(mat));
 
 /*_____________________________________________________________________
 1.6 String Compression
