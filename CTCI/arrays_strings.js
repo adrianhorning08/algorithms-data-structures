@@ -1,16 +1,17 @@
 /*
 _____________________________________________________________________
-1.9 String Rotation
+16.1 Number Swapper
   Assumptions ->
-    Empty strings?
-    ASCII or Unicode?
 
   Plan ->
-    Really smart way CTCI does it, concatenate string1 to string1, and see
-    if str2 is a substring of str1
 */
-
-
+function numSwap(a,b) {
+  a = a - b; // 5 - 10 = -5
+  b = a + b; // - 5 + 10 = 5
+  a = b - a; // 5 - -5 = 10
+  return [a,b]
+}
+// console.log(numSwap(1,2));
 
 /*
 _____________________________________________________________________
