@@ -1,5 +1,30 @@
 /*
 _____________________________________________________________________
+16.6 Smallest Difference
+  Assumptions ->
+
+  Plan ->
+  
+*/
+
+function smallestDiff(arr1, arr2) {
+
+}
+/*
+_____________________________________________________________________
+16.5 Factorial Zeros
+  Assumptions ->
+    Well, you won't be able to do it by finding n! and then doing toString and counting 0's
+
+  Plan ->
+*/
+
+function factorialZeros(n) {
+  // mathy problem
+}
+
+/*
+_____________________________________________________________________
 16.1 Number Swapper
   Assumptions ->
 
