@@ -1,5 +1,56 @@
 /*
 _____________________________________________________________________
+16.11 Diving Board
+  Assumptions ->
+  Plan ->
+    k = 4
+    shorter = 3
+    longer = 5
+*/
+function divingBoard(k, shorter, longer) {
+  const lengths = [];
+  let length = 0;
+
+  let i = 0;
+  let kCopy = k;
+
+  while (kCopy >= 0) {
+    length += (shorter * i);
+    length += (longer * (k-i));
+    lengths.push(length);
+    i++;
+    kCopy--;
+    length = 0;
+  }
+  return lengths;
+}
+// console.log(divingBoard(4,3,5));
+
+
+/*
+_____________________________________________________________________
+16.10 Living People
+  Assumptions ->
+
+  Plan ->
+    given birth and death year, compute the year that has the most people alive
+    [{birth: 1920, death:1990},{birth: 1930, death:1980}]
+
+    hmmmmm.....
+
+    you COULD loop over all years between 1900 - 2000 and see if the
+    birth/death is within that year, then keep a counter and a max
+    obviously not scallable to years beyond those years
+    looks like that is the brute force, there is a more optimal way...
+*/
+function livingPeople(arr) {
+
+}
+
+
+
+/*
+_____________________________________________________________________
 16.8 English Int
   Assumptions ->
 
