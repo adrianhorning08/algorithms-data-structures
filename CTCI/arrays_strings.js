@@ -1,5 +1,77 @@
 /*
 _____________________________________________________________________
+16.8 English Int
+  Assumptions ->
+
+  Plan ->
+    Divide it by 10, to get the tens, hundreds, thousands, etc
+    do you have an if > million, billion, thousand, hundred?
+    have to have a hash of teens and twenty, thirty, forty, etc
+
+    *This isn't all the way done, but whatev. Its not a super
+    difficult problem, its just tedious. Not the best practice
+*/
+
+function englishInt(n) {
+  const nums = {
+    1: 'one',
+    2: 'two',
+    3: 'three',
+    4: 'four',
+    5: 'five',
+    6: 'six',
+    7: 'seven',
+    8: 'eight',
+    9: 'nine',
+    10: 'ten',
+    11: 'eleven',
+    12: 'twelve',
+    13: 'thirteen',
+    14: 'fourteen',
+    15: 'fifteen',
+    16: 'sixteen',
+    17: 'seventeen',
+    18: 'eighteen',
+    19: 'nineteen',
+    20: 'twenty',
+    30: 'thirty',
+    40: 'forty',
+    50: 'fifty',
+    60: 'sixty',
+    70: 'seventy',
+    80: 'eighty',
+    90: 'ninety'
+  }
+  let newArr = [];
+  while (n !== 0) {
+    newArr.push(printWord(n))
+  }
+
+  function printWord(n) {
+    let m;
+    if (n > 100) {
+      m = Math.floor(n / 100);
+      n/= 1000;
+      return m + ' hundred';
+    } else if (n > 1000) {
+      m = Math.floor(n / 1000);
+      m/= 1000;
+      return m + ' thousand';
+    } else if (n > 1000000) {
+      m = Math.floor(n / 1000000);
+      m/= 1000000;
+      return m + ' million';
+    } else {
+      return nums[n];
+    }
+  }
+  return newArr.join(' ');
+}
+// console.log(englishInt(100));
+
+
+/*
+_____________________________________________________________________
 16.7 Number Max
   Assumptions ->
 
@@ -8,15 +80,7 @@ _____________________________________________________________________
 */
 
 function numberMax(n1, n2) {
-  let n1Copy = n1;
-  let n2Copy = n2;
-
-  while (n1 !== 0 || n2 !== 0) {
-    Math.floor(n1 /= 10)
-    Math.floor(n2 /= 10)
-  }
-
-  return n1 ? n2Copy : n1Copy;
+  // bit problem
 }
 // console.log(numberMax(20,19));
 
