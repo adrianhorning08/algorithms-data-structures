@@ -4,12 +4,35 @@ _____________________________________________________________________
   Assumptions ->
 
   Plan ->
-  
+    sort them first, then use 2 pointers
+
+    *Little side note. Anytime time complexity looks like it will be
+    O(n^2), see if you can solve it after the data is sorted, cause that decreases time complexity
 */
 
 function smallestDiff(arr1, arr2) {
+  const sortedA = arr1.sort((a,b) => a - b);
+  const sortedB = arr2.sort((a,b) => a - b);
 
+  let aPointer = 0;
+  let bPointer = 0;
+  let min = Infinity;
+
+  while (aPointer < sortedA.length && bPointer < sortedB.length) {
+    if (Math.abs(sortedA[aPointer] - sortedB[bPointer]) < min) {
+      min = Math.abs(sortedA[aPointer] - sortedB[bPointer]);
+    }
+    if (sortedA[aPointer] < sortedB[bPointer]) {
+      aPointer++;
+    } else {
+      bPointer++;
+    }
+  }
+  return min;
 }
+// console.log(smallestDiff([1,3,15,11,2],[23,127,235,19,8]));
+
+
 /*
 _____________________________________________________________________
 16.5 Factorial Zeros
