@@ -1,5 +1,27 @@
 /*
 _____________________________________________________________________
+16.7 Number Max
+  Assumptions ->
+
+  Plan ->
+    she does it with bits, but this looks like it works....
+*/
+
+function numberMax(n1, n2) {
+  let n1Copy = n1;
+  let n2Copy = n2;
+
+  while (n1 !== 0 || n2 !== 0) {
+    Math.floor(n1 /= 10)
+    Math.floor(n2 /= 10)
+  }
+
+  return n1 ? n2Copy : n1Copy;
+}
+// console.log(numberMax(20,19));
+
+/*
+_____________________________________________________________________
 16.6 Smallest Difference
   Assumptions ->
 
