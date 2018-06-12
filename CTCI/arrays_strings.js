@@ -1,5 +1,29 @@
 /*
 _____________________________________________________________________
+16.17 Contiguous Sequence
+  Assumptions ->
+
+  Plan ->
+*/
+function contiguousSeq(arr) {
+  
+}
+// console.log(contiguousSeq([-8,3,-2,4,-10]));
+
+/*
+_____________________________________________________________________
+16.16 Sub Sort
+  Assumptions ->
+
+  Plan ->
+*/
+function subSort(arr) {
+  // didnt get this one. try again
+}
+// console.log(subSort([1,2,4,7,10,11,7,12,6,7,16,18,19]));
+
+/*
+_____________________________________________________________________
 16.11 Diving Board
   Assumptions ->
   Plan ->
