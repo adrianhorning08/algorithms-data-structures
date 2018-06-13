@@ -1,12 +1,138 @@
 /*
 _____________________________________________________________________
+16.21 Sum Swap
+  Assumptions ->
+    can one number be a 0?
+
+  Plan ->
+  [4,1,2,1,1,2] [3,6,3,3]
+  11,15
+
+  diff is 4
+  so you would see if bigger has 3, smaller has 1
+  then go up until you find something that matches
+  ie, 2,2 well, then thats it
+*/
+
+
+/*
+_____________________________________________________________________
+16.21 Sum Swap
+  Assumptions ->
+    can one number be a 0?
+
+  Plan ->
+  [4,1,2,1,1,2] [3,6,3,3]
+  11,15
+
+  diff is 4
+  so you would see if bigger has 3, smaller has 1
+  then go up until you find something that matches
+  ie, 2,2 well, then thats it
+*/
+
+function sumSwap(arr1,arr2) {
+  const sum1 = arr1.reduce((a,b) => a+b);
+  const sum2 = arr2.reduce((a,b) => a+b);
+
+  let diff = Math.abs(sum1 - sum2);
+  let i = 1;
+  let num1 = 1;
+
+  while (i !== diff) {
+    if (arr1.includes(i) && arr2.includes(diff - i) ) {
+      return [i,diff-i];
+    }
+    i++;
+  }
+  return -1;
+}
+console.log(sumSwap([4,1,2,1,1,2],[3,6,3,3]));
+/*
+_____________________________________________________________________
+16.20 T9
+  Assumptions ->
+
+  Plan ->
+    this is actually really simple
+    really clever.
+    try to reverse engineer the problem
+
+*/
+
+function t9(digits, validWords) {
+
+}
+/*
+_____________________________________________________________________
+16.19 Pond Sizes
+  Assumptions ->
+
+  Plan ->
+    this is similar to the finding all the 1's problem... problem is that the pond can be connected diagonially as well
+    pretty sure you will still have to recurse and switch the 0's to 1 when done
+
+    ALMOST had it
+*/
+function pondSizes(pond) {
+  const sizes = [];
+
+  for (var i = 0; i < pond.length; i++) {
+    for (var j = 0; j < pond[i].length; j++) {
+      if (pond[i][j] === 0) {
+        sizes.push(helper(i,j));
+      }
+    }
+  }
+  return sizes;
+
+  function helper(x,y) {
+    if (x < 0 || y < 0 || x >= pond[x].length || y >= pond.length || pond[x][y] !== 0) {
+      return 0;
+    }
+     pond[x+1][y] + 1;
+    return helper(x-1,y) + 1;
+    return helper(x,y+1) + 1;
+    return helper(x,y-1) + 1;
+    return helper(x+1,y+1) + 1;
+    return helper(x-1,y+1) + 1;
+    return helper(x+1,y-1) + 1;
+    return helper(x-1,y-1) + 1;
+  }
+}
+// console.log(pondSizes([
+//   [0,2,1,0],
+//   [0,1,0,1],
+//   [1,1,0,1],
+//   [0,1,0,1]
+// ]));
+
+/*
+_____________________________________________________________________
+16.18 Pattern Matching
+  Assumptions ->
+
+  Plan ->
+    If the characters in the word in the value contain the same letters I'm not sure how you solve it
+
+    cause im thinking you would loop through the value and find what the words are
+    by seeing if the next letter is in the temp string
+    then confirm there are 2 words, and loop through the pattern
+    and somehow match that its the same
+*/
+function patternMatch(pattern, value) {
+  // no clllluuuueee what is going on with this...
+}
+
+/*
+_____________________________________________________________________
 16.17 Contiguous Sequence
   Assumptions ->
 
   Plan ->
 */
 function contiguousSeq(arr) {
-  
+
 }
 // console.log(contiguousSeq([-8,3,-2,4,-10]));
 
