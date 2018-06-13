@@ -53,11 +53,36 @@ function validRoman(str) {
   // }
   // return true;
 
+  const romans = {
+    'I': 1,
+    'V': 5,
+    'X': 10,
+    'L': 50,
+    'C': 100,
+    'IV': 4,
+    'IX': 9,
+    'XL': 40
+  }
 
-
+  let currNum = 0;
+  let prevNum = 0;
+  for (var i = str.length-1; i > 0; i--) {
+    if (romans[str.slice(i-1,i+1)]) {
+      currNum = romans[str.slice(i-1,i+1)];
+      i--;
+    } else {
+      currNum = romans[str[i]];
+    }
+    if (prevNum === 0) {
+      prevNum = currNum;
+    } else if (currNum < prevNum) {
+      return false;
+    } else {
+      prevNum = currNum;
+    }
+  }
+  return true;
 }
-
-// good one to test is XIVI -> start from the back, 1 is less than 6, so you return false
 
 /*
 NIO
@@ -70,52 +95,39 @@ given a MxN matrix array retrieve the elements, in clockwise order
   ]
   [1,2,3,6,9,12,11,10,7,4,5,8]
 
-  what about recursion??
-  as soon as you get to the of something, go down, when you get to bottom, go left, when you get
-  too far to left, go up
-  problem is...how do you know if you've already visited an item...?
-  you might have to keep track of x,y. X being the col, Y, is the row
-
-  as soon as x hits length, decrement
-  same with y,
-  then only loop until x or y
 */
 
 function retrieveMatrix(matrix) {
   const newArr = [];
-  let startRow = 0;
-  let startCol = 0;
-  let endRow = matrix.length;
-  let endCol = matrix[0].length;
-  let i = 0;
+  let rowStart = 0;
+  let colStart = 0;
+  let rowEnd = matrix.length-1;
+  let colEnd = matrix[0].length-1;
 
-  while (startRow < endRow && startCol < endCol) {
-    // move right
-    for (i = startCol; i < endCol; i++) {
-      newArr.push(matrix[startRow][i])
+  while (rowStart <= rowEnd && colStart <= colEnd) {
+    // print top row
+    for (i = colStart; i <= colEnd; i++) {
+      newArr.push(matrix[rowStart][i])
     }
-    startRow++;
+    rowStart++;
 
-    // move down
-    for (i = startRow; i < endRow; i++) {
-      newArr.push(matrix[i][endCol-1])
+    // print right col
+    for (i = rowStart; i <= rowEnd; i++) {
+      newArr.push(matrix[i][colEnd]);
     }
-    endCol--;
+    colEnd--;
 
-    if (startRow < endRow) {
-      // move left
-      for (i = endCol-1; i >= startCol; i--) {
-        newArr.push(matrix[endRow-1][i])
-      }
-      endRow--;
+    // print bottom row
+    for (i = colEnd; i >= colStart; i--) {
+      newArr.push(matrix[rowEnd][i])
     }
-    if (startCol < endCol) {
-      // move up
-      for (i = endRow-1; i >= startRow; i--) {
-        newArr.push(matrix[i][startCol])
-      }
-      startCol++
+    rowEnd--;
+
+    // print left col
+    for (i = rowEnd; i >= rowStart; i--) {
+      newArr.push(matrix[i][colStart]);
     }
+    colStart++;
   }
   return newArr;
 }
@@ -125,8 +137,6 @@ const matrix = [
   [7,8,9],
   [10,11,12]
 ];
-
-
 
 
 var trailingZeroes = function(n) {
