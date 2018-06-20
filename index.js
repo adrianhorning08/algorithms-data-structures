@@ -1,4 +1,25 @@
-
+var firstUniqChar = function(s) {
+    // what if you went from the back
+    // if the num doesn't exist in the obj, update like an answer variable
+    const obj = {};
+    let letter;
+    let idx;
+    for (let i = s.length-1; i >= 0; i--) {
+       if (obj[s[i]]) {
+         obj[s[i]]++;
+       } else {
+         idx = i;
+         letter = s[i];
+         obj[s[i]] = 1;
+       }
+    }
+    if (obj[letter] === 1) {
+      return idx;
+    } else {
+      return -1;
+    }
+};
+console.log(firstUniqChar("loveleetcode"));
 /*
 NIO
 given a roman string (XVIIIXIII...)
