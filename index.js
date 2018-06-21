@@ -2,6 +2,7 @@ var firstUniqChar = function(s) {
     // what if you went from the back
     // if the num doesn't exist in the obj, update like an answer variable
     const obj = {};
+    // comment
     let letter;
     let idx;
     for (let i = s.length-1; i >= 0; i--) {
