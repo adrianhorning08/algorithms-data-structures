@@ -1,3 +1,16 @@
+var strStr = function(haystack, needle) {
+    if (haystack.length === 0) return 0;
+    let j = 0;
+    for (let i = needle.length; i < haystack.length; i++) {
+        if (haystack.slice(j,i) === needle) return j;
+        j++;
+    }
+    return -1;
+};
+console.log(strStr('hello','ll'));
+
+
+
 var firstUniqChar = function(s) {
     // what if you went from the back
     // if the num doesn't exist in the obj, update like an answer variable
@@ -19,7 +32,6 @@ var firstUniqChar = function(s) {
       return -1;
     }
 };
-console.log(firstUniqChar("loveleetcode"));
 /*
 NIO
 given a roman string (XVIIIXIII...)
