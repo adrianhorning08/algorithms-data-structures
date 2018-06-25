@@ -1,19 +1,21 @@
 /*
 _____________________________________________________________________
-16.21 Sum Swap
+17.1 Add without Plus
   Assumptions ->
-    can one number be a 0?
-
+    I'm pretty sure this has to do with bitwise operators
   Plan ->
-  [4,1,2,1,1,2] [3,6,3,3]
-  11,15
 
-  diff is 4
-  so you would see if bigger has 3, smaller has 1
-  then go up until you find something that matches
-  ie, 2,2 well, then thats it
 */
-
+function addWithoutPlus(num1,num2) {
+  while (num2 !== 0) {
+    let sum = num1 ^ num2;
+    let carry = (num1 & num2) << 1;
+    num1 = sum;
+    num2 = carry;
+  }
+  return num1;
+}
+console.log(addWithoutPlus(2,3));
 
 /*
 _____________________________________________________________________
