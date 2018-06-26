@@ -1,3 +1,26 @@
+const Arithmetic = function(n){
+  this.n = n;
+  return this.n;
+};
+
+Arithmetic.prototype.subtract = function (n) {
+  this.n -= n;
+  return this
+};
+
+Arithmetic.prototype.val = function () {
+  return this.n;
+};
+
+Arithmetic.prototype.add = function (n) {
+  this.n += n;
+  return this;
+};
+
+const workingNumber = new Arithmetic(10).subtract(3).add(2).val();
+
+console.log(workingNumber);
+
 var strStr = function(haystack, needle) {
     if (haystack.length === 0) return 0;
     let j = 0;

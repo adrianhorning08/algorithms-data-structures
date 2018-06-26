@@ -1,5 +1,40 @@
 /*
 _____________________________________________________________________
+17.5 Letters and Numbers
+    longest sub array of equal number of letters and numbers
+  Assumptions ->
+
+  Plan ->
+    you could just do a slice and use regex to see if its longer than longest
+    you could have a pointer at the beginning and end
+    if the letters and numbers aren't equal, decrement one then the other until there is nothing left
+*/
+function lettersNumbers(arr) {
+  let a = 0;
+  let b = arr.length;
+
+  while (a < b) {
+    if (helper(arr.slice(a,b))) {
+      return arr.slice(a,b);
+    }
+    a++;
+    if (helper(arr.slice(a,b))) {
+      return arr.slice(a,b);
+    }
+    b--;
+  }
+  return [];
+
+  function helper(arr) {
+    let nums = arr.join('').match(/\d/gi).length;
+    let letters = arr.join('').match(/\D/gi).length;
+    return letters === nums;
+  }
+}
+/*
+
+/*
+_____________________________________________________________________
 17.1 Add without Plus
   Assumptions ->
     I'm pretty sure this has to do with bitwise operators
@@ -15,7 +50,6 @@ function addWithoutPlus(num1,num2) {
   }
   return num1;
 }
-console.log(addWithoutPlus(2,3));
 
 /*
 _____________________________________________________________________
