@@ -1,3 +1,23 @@
+var lengthOfLongestSubstring = function(s) {
+    let max = 0;
+    const set = new Set();
+    let a = 0;
+    let b = 0;
+    if (s.length === 0) return 0;
+
+    while (a < s.length && b < s.length) {
+      if (!set.has(s[b])) {
+        set.add(s[b++]);
+        max = Math.max(max, b-a);
+      } else {
+        set.delete(s[a++]);
+      }
+    }
+    return max;
+};
+
+console.log(lengthOfLongestSubstring("abcabcbb"));
+
 
 // create a function that returns whether a node is a descendant of another node. params are current DOM nodes
 function descendant(node1, node2) {
