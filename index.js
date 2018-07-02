@@ -1,3 +1,49 @@
+var permute = function(nums) {
+    if (nums.length <= 1) return [nums];
+
+    const last = nums.pop();
+    const perms = permute(nums);
+
+    const totalPerms = [];
+
+    perms.forEach(perm => {
+        for (let i = 0; i < perm.length; i++) {
+            totalPerms.push(perm.concat(last));
+        }
+    })
+    return totalPerms;
+};
+
+console.log(permute([1,2,3]));
+
+
+var divide = function(dividend, divisor) {
+    let count = 0;
+    let total = 0;
+    let negative = false;
+    let bothNegative = false;
+    if (divisor < 0 && dividend < 0) {
+        bothNegative = true;
+    } else if (divisor < 0 || dividend < 0) {
+        negative = true;
+    }
+
+    divisor = Math.abs(divisor);
+    dividend = Math.abs(dividend);
+    if (divisor === 1) return
+    while (total + divisor <= dividend) {
+        count++;
+        total+= divisor;
+    }
+
+    if (negative) {
+        return Math.max(-count, -Math.pow(2,31)-1);
+    } else {
+        return Math.min(count, Math.pow(2,31)-1);
+    }
+};
+
+
 var lengthOfLongestSubstring = function(s) {
     let max = 0;
     const set = new Set();
@@ -15,8 +61,6 @@ var lengthOfLongestSubstring = function(s) {
     }
     return max;
 };
-
-console.log(lengthOfLongestSubstring("abcabcbb"));
 
 
 // create a function that returns whether a node is a descendant of another node. params are current DOM nodes
