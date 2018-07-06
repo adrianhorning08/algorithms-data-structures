@@ -1,7 +1,38 @@
+#pallette {
+  width: 100px;
+  height: 100px;
+  border: 1px solid black;
+}
+
+#container {
+  width: 900px;
+  border: 1px solid black;
+  height: 500px;
+  display: flex;
+  flex-direction: row;
+}
+
+#container > div {
+  width: 25%;
+  height: 100%;
+  border: 1px solid black;
+}
+
+.red {
+  background: rgb(255,0,0);
+}
+
+.blue {
+  background: rgb(0, 0, 255);
+}
+
+.green {
+  background: rgb(0,255,0);
+}
+
 .sibling ~ p.sister {
   color: red;
 }
-
 
 h1 {
   margin-bottom: 30px;

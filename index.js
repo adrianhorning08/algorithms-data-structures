@@ -1,21 +1,105 @@
+function changeColor(e) {
+  console.log(e);
+}
+
+
+function getMinimumDifference(a, b) {
+    const results= [];
+
+    for (let i = 0; i < a.length; i++) {
+        results.push(helper(a[i], b[i]))
+    }
+
+    function helper(str1, str2) {
+        let count = 0;
+        let longest;
+        let short;
+        if (str1.length > str2.length) {
+            longest = str1;
+            short = str2;
+        } else {
+            short = str1;
+            longest = str2;
+        }
+          longest = longest.split('').sort();
+          short = short.split('').sort();
+        for (let i = 0; i < longest.length; i++) {
+            if (longest[i] !== short[i]) {
+                count++;
+            }
+        }
+        if (count <= short.length) {
+            return short.length - count;
+        } else {
+            return -1;
+        }
+    }
+    return results;
+}
+console.log(getMinimumDifference(['ab'],['bc']));
+
+
+function playlist(songs, k, q) {
+    const indexes = {};
+    const songToListen = songs[q];
+    const songOn = songs[k];
+    songs.forEach((song, i) => indexes[song] = i);
+
+    return Math.abs(indexes[songToListen] - indexes[songOn]);
+
+}
+
+function braces(values) {
+    const results = [];
+
+    values.forEach(str => {
+        if(helper(str)) {
+            results.push('YES');
+        } else {
+            results.push('NO');
+        }
+    });
+
+    function helper(str) {
+        const right = [];
+        const braces = {
+          '(': ')',
+          '{': '}',
+          '[': ']'
+        };
+        for (let i = 0; i < str.length; i++) {
+            if (braces[str[i]]) {
+                right.push(braces[str[i]])
+            } else {
+              let blah = right.pop();
+                if (str[i] === blah) {
+                    continue;
+                } else {
+                  return false;
+                }
+            }
+        }
+        return true;
+    }
+
+    return results;
+}
+
 var permute = function(nums) {
     if (nums.length <= 1) return [nums];
 
-    const last = nums.pop();
+    const first = nums.shift();
     const perms = permute(nums);
 
-    const totalPerms = [];
+    const results = [];
 
     perms.forEach(perm => {
-        for (let i = 0; i < perm.length; i++) {
-            totalPerms.push(perm.concat(last));
+        for (let i = 0; i <= perm.length; i++) {
+            results.push(perm.slice(0,i).concat([first]).concat(perm.slice(i, perm.length)));
         }
     })
-    return totalPerms;
+    return results.sort();
 };
-
-console.log(permute([1,2,3]));
-
 
 var divide = function(dividend, divisor) {
     let count = 0;
