@@ -1,7 +1,16 @@
-function changeColor(e) {
-  // console.log(e);
+// O(1) space and O(n) time
+function containsDups(arr) {
+  for (var i = 0; i < arr.length; i++) {
+    let index = Math.abs(arr[i]) - 1;
+    if (arr[index] < 0) {
+      return index+1;
+    } else {
+      arr[index] = -arr[index];
+    }
+  }
+  return -1
 }
-
+console.log(containsDups([1,6,4,9,5,1]));
 
 function getMinimumDifference(a, b) {
     const results= [];
@@ -36,7 +45,6 @@ function getMinimumDifference(a, b) {
     }
     return results;
 }
-console.log(getMinimumDifference(['ab'],['bc']));
 
 
 function playlist(songs, k, q) {
