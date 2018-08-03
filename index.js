@@ -1,3 +1,31 @@
+var threeSum = function(nums) {
+    const results = [];
+    for (let i = 0; i < nums.length-1; i++) {
+        for (let j = i + 1; j < nums.length; j++) {
+            let x = -(nums[i] + nums[j]);
+            let indexOfX = nums.indexOf(x);
+            if (indexOfX !== -1 && indexOfX !== i && indexOfX !== j) {
+                results.push([nums[i], nums[j], x])
+            }
+        }
+    }
+    return results;
+};
+console.log(threeSum([-1, 0, 1, 2, -1, -4]));
+
+function containsDupsNLogN(arr, range) {
+  const newArr = arr.sort();
+  return newArr
+}
+
+function nFibs(n) {
+  if (n <= 2) return [0,1];
+
+  let fibs = nFibs(n-1);
+  fibs.push(fibs[fibs.length-1] + fibs[fibs.length-2])
+  return fibs;
+}
+
 // O(1) space and O(n) time
 function containsDups(arr) {
   for (var i = 0; i < arr.length; i++) {
@@ -10,7 +38,6 @@ function containsDups(arr) {
   }
   return -1
 }
-console.log(containsDups([1,6,4,9,5,1]));
 
 function getMinimumDifference(a, b) {
     const results= [];
